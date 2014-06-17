@@ -290,7 +290,201 @@ For element with both ```ng-dirty``` and ```ng-valid``` classes, give a green bo
 }
 ```
 
+## Creating our first custom Directive
 
+Using ```ng-include```:
+
+```html
+<h3 ng-include="'product-title.html'"></h3>
+```
+
+Custom directive:
+
+```html
+<product-title></product-title>
+```
+
+Why should you write your custom directive instead of using ```ng-include```?
+
+Directives allow you to write HTML that expresses the behaviour of your application.
+
+Expressivness is the real power of writing custom directives. And there are several types of directives you can use:
+
+- Template-expanding Directives. They are the simplest:
+	- define a custom tag or attribute that is expanded or replaced. And can include controller logic if needed.
+- For expressing complex UI
+- Calling events and registering event handlers
+- Reusing common components
+
+But for this workshop we'll stick to the first, most basic way of using custom Directives.
+
+How to Build Custom Directives?
+
+```html
+<message></message>
+```
+
+```js
+app.directive('message', function() {
+	return {
+    	//A configuration object defining how your directive will work
+    };
+});
+```
+
+We'll use two configuration properties for this directive:
+
+```js
+app.directive('message', function() {
+	return {
+    	restrict: 'E',
+        templateUrl: 'message.html'
+    };
+});
+```
+
+The ```restrict``` property configuration is where we specify the type of directive. In this case, ```E``` stands for ```Element```. Then we'll specify the url of a template we want this directive to load onto the page. In this case, ```message.html```.
+
+We could also write this Directive as an ```attribute``` directive and it might look like this:
+
+```html
+	<p message></p>
+```
+
+It's a good practice to use Element Directives for UI widgets and Attribute Directives for mixin behavious...like a tooltip.
+
+In the case of an ```atribute``` directive we'd specify ```restrict: 'A'```.
+
+When you think of a dynamic web application, do you think you'll be able to understand the functionality just by looking at the HTML?
+
+Typically not.
+
+And this is way angular is so awesome.
+
+It allows you to write expressive ```HTML``` through custom directives.
+
+So when you're reading an AngularJS application, you should be able to understand the behaviour and intent from just the ```HTML```.
+
+**Challenge 10:** Separate our message into ```message.html``` and the ```ng-include``` directive to import the template back.
+
+**Challenge 11:** Create an ```Element``` Directive for ```Message``` div that includes the message.html
+
+```js
+app.directive('message', function() {
+	return {
+    	restrict: 'E',
+        templateUrl: 'message.html'
+    }
+});
+```
+
+#### Directive with controllers
+
+In this section we are going to add another Directive. And this time we will attach a controller to it.
+
+We can use the ```controller``` configuration property to do so.
+
+```js
+app.directive('message', function() {
+	return {
+    	restrict: 'E',
+        templateUrl: 'message.html',
+        controller: function() {
+
+        },
+        controllerAs: 'message'
+    };
+});
+```
+
+**Note:** The ```controllerAs``` configuration property stands for the alias.
+
+## Section 5: Dependencies and Services
+
+Our ```app.js``` file starting to get a little bit long. Directives, controllers are all in the same file. We need a way to organise this code.
+
+We are going to start refactor some of our code into their own modules.
+
+Let's create a message module to store message related directive
+
+```js
+	(function() {
+    	var app = angular.module('message-module', []);
+
+        app.directive('message', function() { ... });
+
+        app.directive('message', function() { ... });
+
+        app.directive('message', function() { ... });
+
+    }())
+```
+
+**Note:** Diifferent closure means different app variable.
+
+Now we need to tell our ```messageApp``` module that it depends on the ```message``` module.
+
+```js
+	var app = angular.module('messageApp', ['message-module']);
+```
+
+Don't forget to include the ```script``` tag in ```index.html```
+
+#### Services
+
+Services will enable us to take the data out of our controllers.
+
+We would like to fetch the array of messages from an API. For instance, ```http://api.example.com/messages.json```.
+
+Angular comes with a bunch of built-in services to give your controller extra functionaly. Things like:
+
+- Fetching JSON data from a web service with ```$http```
+- Logging messages to the JavaScript console with ```$log```
+- Filtering an array with ```$filter```
+
+All those services begin with a ```$``` sign...because they're built-in services with angular.
+
+The ```$http``` Service is the one we need to use to get that ```json``` data from our server. We can do that using the http ```GET``` method:
+
+```js
+$http({method: 'GET', url: '/messages.json'})
+```
+
+This method returns a Promise with ```.success()``` and ```.error()```. A promise object allows you to do callbacks on it.
+
+A great feature is that if we tell ```$http``` to fetch JSON, the result will be automatically decoded into JavaScript objects and arrays.
+
+How does a controller use a service like $http?
+
+We use a funky array syntax:
+```js
+app.controller('MessageController', function($http) {
+
+});
+```
+
+The services are arguments in our controller function.
+
+This way of specifying the different services a controller needs is called Dependency Injection.
+
+When angular loads it creates something called an injector. When theses built-in services load they register with the injector as being available libraries.
+
+Then when our application loads it registers our controller with the injector telling it that when it gets executed its going to need th ```$http``` service.
+
+Injector says cool! Then when our page loads and our controller gets used the injector grabs the services that our controller needs  and passes them in as arguemnts, It's called DI becauswe its injecting the services in the controller as arguments.
+
+```js
+app.controller('MessageController', function($http, $scope) {
+
+	$scope.messages = [];
+
+	$http.get('/api/messages.json')
+    	.success(function(data) {
+        	$scope.messages = data;
+        });
+
+});
+```
 
 #### Strong and Emphasize
 
