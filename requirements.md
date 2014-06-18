@@ -28,7 +28,7 @@ The Chrome devtools has great new features to emulate devices such as iPhones, i
 
 If you have an iPhone you'll need to download **Xcode** from the app store. You should download Xcode anyway to run apps on the emulators.
 
-## Running on Android devices
+### Running on Android devices
 
 For Android users we have great news. Chrome has built-in support for running Android apps without having to install the SDK.
 
