@@ -6,7 +6,7 @@ We have a lot to cover in one day. So it would be great if you could get a head 
 
 We assume that you know enough about ```html```, ```css``` and ```javascript``` to build a basic website.
 
-We changed how plans slightly and figured out we could the **Yo** app too, and in 8 hours on two platforms. Well that's the plan at least 😉
+We changed how plans slightly and figured out we could the **Yo** app too, and in 8 hours on two platforms. Well that's the plan at least.
 
 ### Hardware
 
