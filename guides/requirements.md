@@ -1,10 +1,12 @@
-## Prepare for CFG workshop
+## Preparing for the Code: First Girl
 
 We have a lot to cover in one day. So it would be great if you could get a head start to get the environment setup.
 
 ### What is this workshop about?
 
 We assume that you know enough about ```html```, ```css``` and ```javascript``` to build a basic website.
+
+We changed how plans slightly and figured out we could the **Yo** app too, and in 8 hours on two platforms. Well that's the plan at least 😉
 
 ### Hardware
 
@@ -32,4 +34,6 @@ If you have an iPhone you'll need to download **Xcode** from the app store. You 
 
 For Android users we have great news. Chrome has built-in support for running Android apps without having to install the SDK.
 
-Alternativaly you can test the app on emulators. Create a new account over at [Genymotion](http://www.genymotion.com/) and download the emulator. It's much faster than the ones that ship with the Android SDK.
+Alternativaly you can test the app on emulators. Create a new account over 
+at [Genymotion](http://www.genymotion.com/) and download the emulator. 
+It's much faster than the ones that ship with the Android SDK.

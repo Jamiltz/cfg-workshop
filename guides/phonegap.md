@@ -35,7 +35,8 @@ $ python -m SimpleHTTPServer
 
 The default port should be 8000. Open up your browser at ```localhost:8000```.
 
-Open the emulation tab and select the device of your choice. Hit refresh. You have it!
+Open the emulation tab and select the device of your choice.
+Hit refresh. You have it!
 
 #### Adding the platforms
 
