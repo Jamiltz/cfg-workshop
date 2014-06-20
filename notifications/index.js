@@ -54,7 +54,11 @@ app.post('/send', function(req, res, next) {
       //message.delayWhileIdle = true; //Default is false
       message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified.
 
-      sender.send(message, [user.registrationId], 4, function (result) {
+      sender.send(message, [user.body.registrationId], 4, function (err, result) {
+        if(err) {
+          return res.send(500, err);
+        }
+
         return res.send(result);
       });
     })
