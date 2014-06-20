@@ -19,6 +19,11 @@
   "dependencies": {
     "gcm": "^1.0.1",
     "node-gcm": "^0.9.11",
-    "apn": "^1.5.2"
+    "apn": "^1.5.2",
+    "express": "~4.4.4",
+    "orchestrate": "~0.1.2",
+    "morgan": "~1.1.1",
+    "errorhandler": "~1.1.1",
+    "body-parser": "~1.4.3"
   }
 }
