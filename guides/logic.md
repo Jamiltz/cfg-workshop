@@ -1,21 +1,6 @@
-## Building the UI with AngularJS
+## Adding some logic with angularJS
 
-#### Prepare the www folder
-
-First let's delete the boilerplate code from the PhoneGap seed application.
-
-1. Create a new css stylesheet in ```www/css``` and call it **styles.css**
-2. Create a new script file in ```www/js``` and call it **app.js**
-
-
-**Challenge:** Include those files in the ```index.html``` and reload the page in the browser.
-Open devtools and make sure those new files are being fetched from the web server.
-
-**Challenge:** Comment out the PhoneGap html boilerplate. It should look something like this
-
-http://cl.ly/image/3f3q453Y1y08
-
-#### Add bootstrap and angularJS to index.html
+### Add angularJS to index.html
 
 Twitter Bootstrap 3:
 
@@ -26,64 +11,6 @@ AngularJS 1.2.9:
 ```https://code.angularjs.org/1.2.9/angular.js```
 
 **Challenge:** Add those libraries. Reload the page and make sure you have them downloaded in devtools.
-
-#### Building the UI
-
-This should all be familiar, we will use bootstrap to build simple tabs and and list of messages/contacts.
-
-Use the ```pills``` component do display 3 tabs on your screen.
-
-Doc: http://getbootstrap.com/components/#nav-pills
-
-**Challenge:** Override Bootstrap styles to display a mobile friendly tab bar.
-
-**Hint:** Keep in mind that the tab bar should look the same on devices with different screen sizes.
-
-**Solution:**
-
-Use the ```float``` and ```width``` on the list element. On the anchor elements, change the ```border-radius``` to 0
-and center align the text.
-
-```css
-.nav.nav-pills li {
-    float: left;
-    width: 33.3%;
-    margin: 0;
-}
-
-.nav.nav-pills a {
-    text-align: center;
-    border-right: 0;
-}
-```
-
-Move the this component in a section tag.
-
-Now let's add the content for each tab. Your ```body``` tag should look something like this:
-
-```html
-<section class="cfg-home">
-
-            <section class="cfg-contacts">Contact List</section>
-
-            <section class="cfg-messages">Messages</section>
-
-            <section class="cfg-account">User Profile</section>
-
-</section>
-
-<section>
-    <ul class="nav nav-pills">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Messages</a></li>
-    </ul>
-</section>
-```
-
-#### Adding some logic with AngularJS
-
-TO BE CONTINUED HERE
 
 #### Creating an AngularJS module
 
