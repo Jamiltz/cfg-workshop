@@ -1,0 +1,24 @@
+{
+  "name": "cfg",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Jamiltz/cfg-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jamiltz/cfg-workshop/issues"
+  },
+  "homepage": "https://github.com/Jamiltz/cfg-workshop",
+  "dependencies": {
+    "gcm": "^1.0.1",
+    "node-gcm": "^0.9.11",
+    "apn": "^1.5.2"
+  }
+}
