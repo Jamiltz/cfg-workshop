@@ -29,7 +29,7 @@ angular.module('PsstApp', ['LocalStorageModule'])
     $scope.sendUser = function() {
 
 //      $scope.user.registration_id = 'APA91bE4sWZCJxRbYP9jhWgQNrMbFxGHonnjmTQZBna5tbOjplSKKpMfGe9kYZHSwlXz9qZLtSQhxo-_61fZw5SEBQGVE1AbTxJEen5kB73CYYqET2UQC6j4zp5A-_mi2hjNAkq9gDTTgasjgukd3UhwfiwVybb_3hWzInQos6WVJLeA5I_GTDM';
-      $scope.user.registration_id = localStorageService.get('registration_id');
+      $scope.user.registration_id = localStorage.getItem('registration_id');
 
       $http
         .post(constants.HOST + '/signup', $scope.user)
