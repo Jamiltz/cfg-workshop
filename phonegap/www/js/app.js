@@ -61,6 +61,7 @@ angular.module('PsstApp', ['LocalStorageModule'])
 
     $scope.deleteFriends = function() {
       localStorageService.set('friends', []);
+      $scope.friends = [];
     };
 
 

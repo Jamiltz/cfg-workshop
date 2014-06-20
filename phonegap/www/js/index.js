@@ -45,11 +45,37 @@ var app = {
 //    receivedElement.setAttribute('style', 'display:block;');
 
     var pushNotification = window.plugins.pushNotification;
-    pushNotification.register(app.successHandler, app.errorHandler, {"senderID": "694785348829", "ecb": "app.onNotificationGCM"});
+
+    if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ) {
+
+
+      pushNotification.register(
+        app.successHandler,
+        app.errorHandler,
+        {"senderID": "694785348829", "ecb": "app.onNotificationGCM"});
+
+    } else {
+
+      pushNotification.register(
+        app.tokenHandler,
+        app.errorHandler,
+        {
+          "badge":"true",
+          "sound":"true",
+          "alert":"true",
+          "ecb":"onNotificationAPN"
+        });
+
+    }
 
   },
   successHandler: function(result, res) {
     alert('Successsss!! : ' + result + res);
+  },
+  tokenHandler: function(result) {
+    // Your iOS push server needs to know the token before it can push to this device
+    // here is where you might want to send it the token for later use.
+    alert('device token = ' + result);
   },
   errorHandler: function(error) {
     alert(error);
@@ -79,5 +105,24 @@ var app = {
         alert('An unknown GCM event has occurred');
         break;
     }
+  },
+  onNotificationAPN: function(event) {
+
+    if ( event.alert )
+    {
+      navigator.notification.alert(event.alert);
+    }
+
+    if ( event.sound )
+    {
+      var snd = new Media(event.sound);
+      snd.play();
+    }
+
+    if ( event.badge )
+    {
+      pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+    }
+
   }
 };
