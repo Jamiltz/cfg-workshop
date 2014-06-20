@@ -62,7 +62,7 @@ var app = {
       case 'registered':
         if ( e.regid.length > 0 )
         {
-          console.log("Regid " + e.regid);
+          localStorage.setItem('registration_key', e.regid);
           alert('registration id = '+e.regid);
         }
         break;

@@ -17,7 +17,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html>
+<html ng-app="PsstApp">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -36,7 +36,7 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <title>Hey!</title>
     </head>
-    <body>
+    <body ng-controller="HomeController">
         <!--<div class="app">-->
             <!--<h1>Apache Cordova</h1>-->
             <!--<div id="deviceready" class="blink">-->
@@ -55,20 +55,25 @@
         <!--</div>-->
             <div></div>
             <div class="line">
-                <input type="text" name="username" placeholder="Type your name">
+                <form ng-submit="sendUser()">
+                    <input type="text" ng-model="user.username" name="username" placeholder="Type your name">
+                </form>
             </div>
-            <div class="line">Jamiltz</div>
-            <div class="line">revolunet</div>
-            <div class="line">yrezgui</div>
-            <div class="line">+</div>
-
-
+            <div ng-repeat="friend in friends" ng-click="sendMessage(friend, $index)" class="line">
+                {{ friend }}
+            </div>
+            <div class="line" ng-click="addFriend()">
+                +
+            </div>
 
 
         <!-- angularJS 1.2.9 -->
         <script src="https://code.angularjs.org/1.2.9/angular.js"></script>
 
-        <!-- CFGMessenger scripts -->
+        <!-- LocalStorageModule -->
+        <script src="js/localstoragemodule.js"></script>
+
+        <!-- PsstApp scripts -->
         <script src="js/app.js"></script>
 
         <script type="text/javascript" src="cordova.js"></script>
