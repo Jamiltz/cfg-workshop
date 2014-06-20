@@ -55,7 +55,6 @@ var app = {
     alert(error);
   },
   onNotificationGCM: function(e) {
-    alert('HEY');
 
     switch( e.event )
     {

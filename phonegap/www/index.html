@@ -62,9 +62,14 @@
             <div ng-repeat="friend in friends" ng-click="sendMessage(friend, $index)" class="line">
                 {{ friend }}
             </div>
-            <div class="line" ng-click="addFriend()">
-                +
+            <div class="line">
+                <form ng-submit="addFriend(friend_name)">
+                    <input type="text" ng-model="friend_name" name="username" placeholder="Add Username">
+                </form>
             </div>
+        <div class="line" ng-click="deleteFriends()">
+            Delete all friends
+        </div>
 
 
         <!-- angularJS 1.2.9 -->
